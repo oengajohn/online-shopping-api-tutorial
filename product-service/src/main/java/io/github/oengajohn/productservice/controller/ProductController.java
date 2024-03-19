@@ -3,6 +3,7 @@ package io.github.oengajohn.productservice.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,6 +11,7 @@ import io.github.oengajohn.productservice.model.GenericResponse;
 import io.github.oengajohn.productservice.model.ProductCreateRequest;
 import io.github.oengajohn.productservice.model.ProductCreateResponse;
 import io.github.oengajohn.productservice.service.ProductService;
+import jakarta.websocket.server.PathParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +30,17 @@ public class ProductController {
     public GenericResponse<List<ProductCreateResponse>> list() {
        List<ProductCreateResponse> pr = productService.findAll();
        GenericResponse<List<ProductCreateResponse>> resp = GenericResponse.<List<ProductCreateResponse>>builder()
+                .success(true)
+                .msg("Data fetched Successfully")
+                .data(pr)
+                .build();
+                log.info("We returned : {}",pr);
+                return resp;
+    }
+    @GetMapping("/{productId}")
+    public GenericResponse<ProductCreateResponse> findById(@PathVariable(name = "productId")  Integer productId) {
+      ProductCreateResponse pr = productService.findById(productId);
+       GenericResponse<ProductCreateResponse> resp = GenericResponse.<ProductCreateResponse>builder()
                 .success(true)
                 .msg("Data fetched Successfully")
                 .data(pr)
