@@ -11,7 +11,6 @@ import io.github.oengajohn.productservice.model.GenericResponse;
 import io.github.oengajohn.productservice.model.ProductCreateRequest;
 import io.github.oengajohn.productservice.model.ProductCreateResponse;
 import io.github.oengajohn.productservice.service.ProductService;
-import jakarta.websocket.server.PathParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
