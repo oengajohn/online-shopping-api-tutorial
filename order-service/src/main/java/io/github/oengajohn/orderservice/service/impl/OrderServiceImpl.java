@@ -33,6 +33,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void placeOrder(OrderRequest orderRequest) {
+            
         Order order = new Order();
 
         // Checks
@@ -47,8 +48,8 @@ public class OrderServiceImpl implements OrderService {
             productCodes.add(orderItemRequest.getProductCode());
             productQuantities.add(orderItemRequest.getQuantity());
         }
-        log.info("productCodes",productCodes);       
-        log.info("productQuantities",productQuantities);   
+        log.info("{}",productCodes);       
+        log.info("{}",productQuantities);   
         GenericResponse<Boolean> response = webClient.get()
                 .uri("http://localhost:6002/api/inventory/check",
                         uriBuilder -> uriBuilder
