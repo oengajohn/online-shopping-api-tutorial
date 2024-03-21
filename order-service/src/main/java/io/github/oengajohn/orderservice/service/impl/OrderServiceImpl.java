@@ -78,6 +78,7 @@ public class OrderServiceImpl implements OrderService {
             orderRepository.save(order);
             //TODO: make the call to inventory to reduce quantity
             //TODO: process payment for an order
+            //TODO: send notification to  the packaging department 
             return order.getOrderNumber();
 
         } else {
