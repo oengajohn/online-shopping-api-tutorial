@@ -3,16 +3,10 @@ server:
 spring:
   application:
     name: inventory-service
+  profiles:
+    active: qa,default
   config:
     import: optional:configserver:http://localhost:8888
-  data:
-    mongodb:
-    #   uri: mongodb://root:generic@localhost:27017/inventorydb
-        host: localhost
-        port: 27017
-        database: inventorydb
-        username: root
-        password: generic
-        authentication-database: admin
+  
  
 
